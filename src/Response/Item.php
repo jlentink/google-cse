@@ -4,21 +4,40 @@ namespace GoogleSearch\Response;
 
 
 class Item{
+
     const TYPE_PLAIN     = 0;
     const TYPE_HTML      = 1;
     const TYPE_FORMATTED = 2;
     const TYPE_DISPLAY   = 3;
 
+    /**
+     * @var string
+     */
     private $_cacheId = '';
 
+    /**
+     * @var string
+     */
     private $_link = '';
 
+    /**
+     * @var string
+     */
     private $_displayLink = '';
 
+    /**
+     * @var string
+     */
     private $_formattedUrl = '';
 
+    /**
+     * @var string
+     */
     private $_htmlFormattedUrl = '';
 
+    /**
+     * @var string
+     */
     private $_image = '';
 
     /**
@@ -26,12 +45,24 @@ class Item{
      */
     private $_metaTags = [];
 
+    /**
+     * @var string
+     */
     private $_snippet = '';
 
+    /**
+     * @var string
+     */
     private $_htmlSnippet = '';
 
+    /**
+     * @var string
+     */
     private $_title = '';
 
+    /**
+     * @var string
+     */
     private $_htmlTitle = '';
 
 
@@ -91,6 +122,7 @@ class Item{
     }
 
     /**
+     * @param int $type
      * @return string
      */
     public function getLink($type = self::TYPE_PLAIN)

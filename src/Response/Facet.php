@@ -4,10 +4,19 @@ namespace GoogleSearch\Response;
 
 class Facet {
 
+    /**
+     * @var string
+     */
     private $_anchor = '';
 
+    /**
+     * @var string
+     */
     private $_label = '';
 
+    /**
+     * @var string
+     */
     private $_labelWithOp = '';
 
     public function __construct($jsonObject){

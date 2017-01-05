@@ -5,10 +5,21 @@ namespace GoogleSearch\Response;
 
 class Metatag
 {
+    /**
+     * @var string
+     */
     private $_label = '';
 
+    /**
+     * @var string
+     */
     private $_value = '';
 
+    /**
+     * Metatag constructor.
+     * @param $label
+     * @param $value
+     */
     public function __construct($label, $value){
         $this->_label = $label;
         $this->_value = $value;

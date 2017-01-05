@@ -3,18 +3,32 @@
 namespace GoogleSearch\Response;
 
 
+use GoogleSearch\Query;
+
 class Metainformation {
 
+    /**
+     * @var int
+     */
     protected $_totalResults = 0;
 
+    /**
+     * @var float
+     */
     protected $_searchTime = 0.0;
 
+    /**
+     * @var null|\stdClass
+     */
     protected $_nextInformation = null;
 
+    /**
+     * @var null|\stdClass
+     */
     protected $_prevInformation = null;
 
     /**
-     * @var SearchQuery|null
+     * @var Query|null
      */
     protected $_request = null;
 
@@ -22,7 +36,7 @@ class Metainformation {
      * Metainformation constructor.
      * @param \stdClass $queries
      * @param \stdClass $searchInformation
-     * @param SearchQuery $request
+     * @param Query $request
      */
     public function __construct($queries, $searchInformation, $request){
         $this->_request = $request;
@@ -58,10 +72,10 @@ class Metainformation {
     /**
      * Get the Next page query query if exists
      *
-     * @return SearchQuery|null
+     * @return Query|null
      */
     public function getNextPage() {
-        if($this->_nextInformation)
+        if($this->_nextInformation && isset($this->_nextInformation->startIndex))
             return $this->_request->setStartIndex($this->_nextInformation->startIndex);
 
         return null;
@@ -70,10 +84,10 @@ class Metainformation {
     /**
      * Get the Previous page query if exists
      *
-     * @return SearchQuery|null
+     * @return Query|null
      */
     public function getPrevPage() {
-        if($this->_prevInformation)
+        if($this->_prevInformation && isset($this->_prevInformation->startIndex))
             return $this->_request->setStartIndex($this->_prevInformation->startIndex);
 
         return null;

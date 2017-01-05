@@ -1,8 +1,11 @@
 <?php
 
-namespace GoogleSearch\Response;
+namespace GoogleSearch;
 
-use GoogleSearch\Exception;
+use GoogleSearch\Response\Facet;
+use GoogleSearch\Response\Item;
+use GoogleSearch\Response\Metainformation;
+use GoogleSearch\Response\Promotion;
 
 class Response {
 
@@ -17,7 +20,7 @@ class Response {
     private $_title = '';
 
     /**
-     * @var SearchQuery
+     * @var Query
      */
     private $_request = null;
 
@@ -35,7 +38,7 @@ class Response {
 
     public function __construct($jsonString, Query $request){
         $this->_request = $request;
-        $this->_parse($jsonString, $request);
+        $this->_parse($jsonString);
     }
 
     protected function _parse($jsonString){
@@ -63,7 +66,7 @@ class Response {
     /**
      * Get the corresponding request for this response.
      *
-     * @return SearchQuery
+     * @return Query
      */
     public function getRequest()
     {

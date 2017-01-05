@@ -12,8 +12,6 @@ class Search
 
     private $_pageSize = 10;
 
-
-
     public function __construct($apiKey, $searchEngine)
     {
         $this->_apiKey = $apiKey;
@@ -29,7 +27,7 @@ class Search
     }
 
     /**
-     * @return SearchQuery
+     * @return Query
      */
     public function getQuery(){
         $query = new Query();
@@ -41,13 +39,13 @@ class Search
     }
 
     /**
-     * @param SearchQuery|string $searchQuery
-     * @param int|null $page Pages start from 0
+     * @param Query|string $searchQuery
+     * @param int|null $startIndex Pages start from 0
      * @return Response
      */
     public function search($searchQuery, $startIndex = null)
     {
-        if(!get_class($searchQuery) == 'GoogleSearch\Query\Query'){
+        if(!get_class($searchQuery) == 'GoogleSearch\Query'){
             $query = $searchQuery;
             $searchQuery = $this->getQuery();
             $searchQuery->query($query);

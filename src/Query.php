@@ -47,6 +47,7 @@ class Query
     const FILETYPE_WDB = 'wdb';
     const FILETYPE_WRI = 'wri';
     const FILETYPE_RTF = 'rtf';
+    const FILETYPE_LWP = 'LWP';
     const FILETYPE_SWF = 'swf';
     const FILETYPE_ANS = 'ans';
     const FILETYPE_TXT = 'txt';
@@ -179,16 +180,6 @@ class Query
      */
     public function getCustomSearchEngine(){
         return $this->_options['cx'];
-    }
-
-    /**
-     * The sort parameter specifies that the results be sorted according to the specified expression.
-     * For example, sort by date.
-     * @param $sortOption
-     * @return $this
-     */
-    public function setSort($sortOption){
-        return $this;
     }
 
     /**
@@ -479,7 +470,7 @@ class Query
     /**
      * Specifies that all search results should be pages that are related to the specified URL.
      *
-     * @param $term
+     * @param string $site
      * @return $this
      */
     public function setRelatedSite($site){
@@ -544,7 +535,7 @@ class Query
      * Specifies the starting value for a search range.
      * Use lowRange and highRange to append an inclusive search range of lowRange...highRange to the query.
      *
-     * @param string $lowRange
+     * @param string $highRange
      * @return $this
      */
     public function setHighRange($highRange){
@@ -605,9 +596,9 @@ class Query
      * @throws Exception
      */
     public function setFileType($type){
-        if(!in_array($type, [self::FILETYPE_PDF, self::FILETYPE_PSD, self::FILETYPE_WK1, self::FILETYPE_WK2,
+        if(!in_array($type, [self::FILETYPE_PDF, self::FILETYPE_PS, self::FILETYPE_WK1, self::FILETYPE_WK2,
             self::FILETYPE_WK3, self::FILETYPE_WK4, self::FILETYPE_WK5, self::FILETYPE_WKI, self::FILETYPE_WKS,
-            self::FILETYPE_WKU. self::FILETYPE_LWP, self::FILETYPE_NW, self::FILETYPE_XLS, self::FILETYPE_PPT,
+            self::FILETYPE_WKU. self::FILETYPE_LWP, self::FILETYPE_MW, self::FILETYPE_XLS, self::FILETYPE_PPT,
             self::FILETYPE_DOC, self::FILETYPE_WKS, self::FILETYPE_WPS, self::FILETYPE_WDB, self::FILETYPE_WRI,
             self::FILETYPE_RTF, self::FILETYPE_SWF, self::FILETYPE_ANS, self::FILETYPE_TXT]))
                 throw new Exception('$type must be one of the valid options in the self::FILETYPE_* list');

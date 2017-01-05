@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: utopia
- * Date: 05/01/2017
- * Time: 09:26
- */
 
 namespace GoogleSearch\Response;
 
@@ -14,14 +8,29 @@ class Promotion {
     const TYPE_PLAIN = 0;
     const TYPE_HTML  = 1;
 
+    /**
+     * @var string
+     */
     private $_htmlTitle = '';
 
+    /**
+     * @var string
+     */
     private $_plainTile = '';
 
+    /**
+     * @var string
+     */
     private $_displayLink = '';
 
+    /**
+     * @var string
+     */
     private $_link = '';
 
+    /**
+     * @var string
+     */
     private $_image = '';
 
     public function __construct($rawData){

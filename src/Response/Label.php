@@ -5,10 +5,19 @@ namespace GoogleSearch\Response;
 
 class Label {
 
+    /**
+     * @var string
+     */
     private $_name = '';
 
+    /**
+     * @var string
+     */
     private $_displayName = '';
 
+    /**
+     * @var string
+     */
     private $_labelWithOp = '';
 
     public function __construct($data){
@@ -22,7 +31,7 @@ class Label {
      */
     public function getName()
     {
-        return $this->name;
+        return $this->_name;
     }
 
     /**
@@ -38,7 +47,7 @@ class Label {
      */
     public function getLabelWithOp()
     {
-        return $this->labelWithOp;
+        return $this->_labelWithOp;
     }
 
 }
