@@ -1,0 +1,15 @@
+{
+  "name": "jlentink/google-cse",
+  "description": "Easy search with google custom search",
+  "keywords": ["Google"],
+  "license": "GPL-2.0+",
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "GoogleSearch\\":"src/"
+    }
+  },
+  "require": {
+    "guzzlehttp/guzzle": ">=6.2.2"
+  }
+}
