@@ -59,4 +59,31 @@ class Search
         $client = new Client();
         return new Response($client->get($searchQuery->getQueryEndpoint(), ['query' => $searchQuery->getQueryStructure()])->getBody(), $searchQuery);
     }
+
+    protected function _requestAutoComplete($searchQuery){
+        $url = sprintf('https://clients1.google.com/complete/search?client=partner&hl=en&sugexp=gsnos%%2Cn%%3D13&gs_rn=25&gs_ri=partner&partnerid=%s&types=t&ds=cse&cp=4&gs_id=g&q=%s&callback=autocomplete', $this->_apiEngine, $searchQuery);
+        $client = new Client();
+        $response = $client->request('GET', $url);
+        return $response->getBody()->getContents();
+
+    }
+
+    public function autoComplete($searchQuery){
+        $matches = [];
+        $completes = [];
+        $rawCompleteString = $this->_requestAutoComplete($searchQuery);
+
+        preg_match('/autocomplete.(.*?)\((.*)\)/', $rawCompleteString, $matches);
+
+        try {
+            $autoCompleteJson = \GuzzleHttp\json_decode($matches[2]);
+            foreach($autoCompleteJson[1] as $item){
+                $completes[] = $item[0];
+            }
+            return $completes;
+        }catch(\Exception $e){
+            return [];
+        }
+    }
+
 }
