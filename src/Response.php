@@ -89,5 +89,26 @@ class Response {
         return $this->_promotions;
     }
 
+    /**
+     * @return array
+     */
+    public function getFacets() {
+        return $this->_facets;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle() {
+        return $this->_title;
+    }
+
+    /**
+     * @return array
+     */
+    public function getItems() {
+        return $this->_items;
+    }
+
 
 }
