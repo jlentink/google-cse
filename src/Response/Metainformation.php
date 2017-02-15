@@ -48,8 +48,8 @@ class Metainformation {
             $this->_nextInformation = $queries->nextPage[0];
         }
 
-        if(isset($queries->prevPage[0])){
-            $this->_prevInformation = $queries->prevPage[0];
+        if(isset($queries->previousPage[0])){
+            $this->_prevInformation = $queries->previousPage[0];
         }
         $this->_searchTime = $searchInformation->searchTime;
         $this->_totalResults = $searchInformation->totalResults;
