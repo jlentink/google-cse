@@ -84,8 +84,9 @@ class Item{
         $this->_htmlSnippet = $data->htmlSnippet;
         $this->_htmlTitle = $data->htmlTitle;
         $this->_link = $data->link;
-        if(isset($data->pagemap->cse_image->src))
-            $this->_image = $data->pagemap->cse_image->src;
+        if(isset($data->pagemap->cse_image[0]->src))
+            $this->_image = $data->pagemap->cse_image[0]->src;
+
         $this->_snippet = $data->snippet;
         $this->_title = $data->title;
 
